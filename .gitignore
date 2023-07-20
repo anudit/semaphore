@@ -62,7 +62,7 @@ node_modules/
 
 # Production
 build
-dist
+# dist
 docs/*
 !docs/CNAME
 !docs/index.html
