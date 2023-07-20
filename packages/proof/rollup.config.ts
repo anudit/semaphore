@@ -1,9 +1,9 @@
-import typescript from "rollup-plugin-typescript2"
 import commonjs from "@rollup/plugin-commonjs"
-import * as fs from "fs"
-import cleanup from "rollup-plugin-cleanup"
 import json from "@rollup/plugin-json"
 import { nodeResolve } from "@rollup/plugin-node-resolve"
+import * as fs from "fs"
+import cleanup from "rollup-plugin-cleanup"
+import typescript from "rollup-plugin-typescript2"
 
 const pkg = JSON.parse(fs.readFileSync("./package.json", "utf-8"))
 const banner = `/**
@@ -18,6 +18,7 @@ const banner = `/**
 export default {
     input: "src/index.ts",
     output: [
+        { file: './dist/index.js', format: "iife", name: 'SM' },
         { file: pkg.exports.require, format: "cjs", banner, exports: "auto" },
         { file: pkg.exports.import, format: "es", banner }
     ],
